@@ -1,0 +1,13 @@
+services:
+  database:
+    platform: linux/amd64
+    restart: unless-stopped
+    env_file:
+      - .env
+    image: postgres:16.4-alpine
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "5430:5432"
